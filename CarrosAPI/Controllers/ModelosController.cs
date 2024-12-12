@@ -34,6 +34,31 @@ namespace CarrosAPI.Controllers
 
             return modelo;
         }
+        [HttpGet("modelo/{modelo}")]
+        public ActionResult<IEnumerable<ModeloCarro>> GetPorModelo(string modelo)
+        {
+            var modelos = _context.ModelosCarros.Where(m => m.Modelo == modelo).ToList();
+
+            if (modelos == null || !modelos.Any())
+            {
+                return NotFound(new { Message = "Nenhum modelo encontrado para o modelo especificado." });
+            }
+
+            return Ok(modelos);
+        }
+        [HttpGet("marca/{marca}")]
+        public ActionResult<IEnumerable<ModeloCarro>> GetPorMarca(string marca)
+        {
+            var modelos = _context.ModelosCarros.Where(m => m.Marca == marca).ToList();
+
+            if (modelos == null || !modelos.Any())
+            {
+                return NotFound(new { Message = "Nenhum modelo encontrado para a marca especificada." });
+            }
+
+            return Ok(modelos);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<ModeloCarro>> PostModelo(ModeloCarro modelo)
@@ -89,4 +114,5 @@ namespace CarrosAPI.Controllers
         }
 
     }
+
 }
