@@ -3,6 +3,7 @@ using CarrosAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarrosAPI.Migrations
 {
     [DbContext(typeof(CarrosDbContext))]
-    partial class CarrosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241220160841_AddImagemToModeloCarro")]
+    partial class AddImagemToModeloCarro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -19,6 +19,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -41,5 +42,10 @@ app.MapControllers();
 
 app.UseRouting();
 app.UseSoapEndpoint<ICarrosSoapService>("/CarrosSoapService.asmx", new SoapEncoderOptions());
+
+app.UseCors(options =>
+    options.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader());
 
 app.Run();
